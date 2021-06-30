@@ -1,0 +1,36 @@
+html body {
+    background-color: #32302f;
+}
+
+#quote-box {
+    margin: 0;
+    margin-left: -15px;
+    width: 100vw;
+    height: 100vh;
+    padding: 4rem;
+    padding-bottom: 1rem;
+    font-size: 4rem;
+    font-weight: 900;
+    background-color: #32302f;
+    color: #d79921;
+}
+
+#text {
+    font-size: 7rem;
+}
+
+#author {
+    bottom: 0;
+}
+
+.btn, .btn:focus {
+    position: fixed;
+    bottom: 3rem;
+    color: #32302f;
+    background-color: #d79921;
+    border: none;
+}
+
+.btn:hover, .btn:active {
+    background-color: #cfcfcf;
+}
