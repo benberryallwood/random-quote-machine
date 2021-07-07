@@ -1,17 +1,12 @@
 #!/bin/env python3
-#import os
-import email, imaplib
+import email
+import imaplib
 import re
 
-#cwd = os.getcwd()
-EMAIL_UN  = ''
+EMAIL_UN = ''
 EMAIL_PW = ''
 
-#regex patterns
-#quote
-q = re.compile('"(.*)"')
-#author
-a = re.compile(' - (.*)')
+quotes = []
 
 with imaplib.IMAP4_SSL('imap.gmail.com', 993) as M:
     M.login(EMAIL_UN, EMAIL_PW)
@@ -22,8 +17,6 @@ with imaplib.IMAP4_SSL('imap.gmail.com', 993) as M:
         email_body = data[0][1]
         email_text = str(email_body)
         mail = email.message_from_string(email_text)
-        # print('Message %s\n%s\n' % (num, data[0][1]))
-        #print(mail)
         line_list = email_text.split('\\r\\n\\r\\n')
         for line in line_list:
             if "Quote of the Week" in line:
@@ -36,7 +29,10 @@ with imaplib.IMAP4_SSL('imap.gmail.com', 993) as M:
                 line = line.replace('=E2=80=95', '-')
                 line = line.replace('=E2=80=99', '\'')
                 line = line.replace('\\\'', '\'')
-                #print(line)
-                print(q.search(line).group())
-                print(a.search(line).group())
-                
+
+                q = re.search('"(.*)" - ', line).group(1)  # quote
+                a = re.search('" - (.*)', line).group(1)  # author
+                quotes.append({'quote': q, 'author': a})
+
+with open("quotes.txt", "w") as Q:
+    Q.write(str(quotes))
