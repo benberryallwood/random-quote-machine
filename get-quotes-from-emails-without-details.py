@@ -2,11 +2,12 @@
 import email
 import imaplib
 import re
+import json
 
 EMAIL_UN = ''
 EMAIL_PW = ''
 
-quotes = dict()
+quotes_dict = dict()
 
 with imaplib.IMAP4_SSL('imap.gmail.com', 993) as M:
     M.login(EMAIL_UN, EMAIL_PW)
@@ -35,10 +36,12 @@ with imaplib.IMAP4_SSL('imap.gmail.com', 993) as M:
 
                 q = re.search('"(.*)" - ', line).group(1)  # quote
                 a = re.search('" - (.*)', line).group(1)  # author
-                quotes[i] = {'quote': q, 'author': a}
+                quotes_dict[str(i)] = {'quote': q, 'author': a}
                 i += 1
 
-# print(quotes)
+quotes_json = json.dumps(quotes_dict, indent=2)
+#quotes_json = json.dumps(quotes_dict)
+print(quotes_json)
 
 with open("quotes.json", "w") as Q:
-    Q.write(str(quotes))
+    Q.write(quotes_json)
