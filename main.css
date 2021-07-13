@@ -1,5 +1,6 @@
 html body {
     background-color: #32302f;
+    overflow-x: hidden;
 }
 
 #quote-box {
