@@ -28,7 +28,7 @@ jQuery helped keep the javascript very simple and easy to read.
 
 The quotes I used are the "Quote[s] of the Week" from Quincy Larson's mailing list.
 They are programming themed, motivational, thought-provoking and very often amusing.
-In order to get the quotes, I wrote a [Python script](https://github.com/benberryallwood/random-quote-machine/blob/883d454f96171eba1476dfb260faf06330d4cdc8/get-quotes-from-emails-without-details.py) (with my email login details removed) which retrieves the emails that contain these quotes and saves them into a [JSON file](https://github.com/benberryallwood/random-quote-machine/blob/883d454f96171eba1476dfb260faf06330d4cdc8/quotes.json).
+In order to get the quotes, I wrote a [Python script](https://github.com/benberryallwood/random-quote-machine/blob/883d454f96171eba1476dfb260faf06330d4cdc8/get-quotes-from-emails-without-details.py) (with my email login details removed) which retrieves the emails that contain these quotes and saves the quotes into a [JSON file](https://github.com/benberryallwood/random-quote-machine/blob/883d454f96171eba1476dfb260faf06330d4cdc8/quotes.json).
 I then simply copied it into my javascript file and used [Vim macros](https://www.tutorialspoint.com/vim/vim_macros.htm) in order to format it into a javascript object.
 
 I will note that [line 32 of index.html](https://github.com/benberryallwood/random-quote-machine/blob/883d454f96171eba1476dfb260faf06330d4cdc8/index.html#L32) contains the freeCodeCamp testing script.
